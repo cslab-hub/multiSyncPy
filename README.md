@@ -1,4 +1,5 @@
-multiSyncPy is a Python package for quantifying multivariate synchrony. Our package supports the burgeoning field of research into synchrony, making accessible a set of methods for studying group-level rather than dyadic constructs of synchrony and/or coordination. We offer a range of metrics for synchrony, the choice of which is justified by their use in recent literature.
+# multiSyncPy
+multiSyncPy is a Python package for quantifying multivariate synchrony. Our package supports the burgeoning field of research into synchrony, making accessible a set of methods for studying group-level rather than dyadic constructs of synchrony and/or coordination. We offer a range of metrics for estimating mulivariate synchrony based on a collection of those used in recent literature.
 
 The main methods of this package are functions to calculate:
 
