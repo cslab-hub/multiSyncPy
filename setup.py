@@ -16,7 +16,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/cslab-hub/multiSyncPy",
     author="Dan Hudson",
-    ##author_email="office@realpython.com",
+    author_email="daniel.dominic.hudson@uni-osnabrueck.de",
     license="GNU LGPL",
     classifiers=[
         "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
