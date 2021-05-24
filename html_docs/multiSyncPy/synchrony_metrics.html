@@ -1,0 +1,1216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>multiSyncPy.synchrony_metrics API documentation</title>
+<meta name="description" content="Synchrony Metrics …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>multiSyncPy.synchrony_metrics</code></h1>
+</header>
+<section id="section-intro">
+<p>Synchrony Metrics</p>
+<p>This module provides functions used to compute synchrony metrics on multivariate time series. It contains the following functions:</p>
+<ul>
+<li>recurrence_matrix - Creates a recurrence matrix from a multivariate time series. </li>
+<li>get_diagonal_lengths - Finds the lengths of diagonals in a recurrence matrix. Used by rqa_metrics. </li>
+<li>rqa_metrics - Computes the proportion of recurrence, proportion of determinism, average diagonal length and longest diagonal length for an input recurrence matrix. </li>
+<li>rho - A cluster-phase synchrony metric.</li>
+<li>coherence_team - A synchrony metric based on spectral density.</li>
+<li>convert_to_terciles - Takes a time series and returns a time series where each value is replaced by a number indicating which tercile it belongs in. Used by pattern_entropy. </li>
+<li>symbolic_entropy - A metric based on the entropy of the combined 'state' across a multivariate time series. </li>
+<li>kuramoto_weak_null - Tests the significance of the observed Kuramoto order parameter values in a sample of multivariate time series. </li>
+<li>metric_fixed_parameters - Provides a copy of a function to calculate a synchrony metric, but with all parameters fixed except the input data. For use with apply_windowed when functions have multiple parameters. </li>
+<li>apply_windowed - A function used to apply other functions in a windowed fashion. </li>
+<li>shuffle_recordings - Creates surrogate_data by shuffling variables between time series in a sample of multivariate time series. </li>
+<li>shuffle_time_windows - Creates surrogate_data by shuffling time windows, separately for each variable of a multivariate time series.</li>
+</ul>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Synchrony Metrics
+
+This module provides functions used to compute synchrony metrics on multivariate time series. It contains the following functions:
+
+ * recurrence_matrix - Creates a recurrence matrix from a multivariate time series. 
+ * get_diagonal_lengths - Finds the lengths of diagonals in a recurrence matrix. Used by rqa_metrics. 
+ * rqa_metrics - Computes the proportion of recurrence, proportion of determinism, average diagonal length and longest diagonal length for an input recurrence matrix. 
+ * rho - A cluster-phase synchrony metric.
+ * coherence_team - A synchrony metric based on spectral density.
+ * convert_to_terciles - Takes a time series and returns a time series where each value is replaced by a number indicating which tercile it belongs in. Used by pattern_entropy. 
+ * symbolic_entropy - A metric based on the entropy of the combined &#39;state&#39; across a multivariate time series. 
+ * kuramoto_weak_null - Tests the significance of the observed Kuramoto order parameter values in a sample of multivariate time series. 
+ * metric_fixed_parameters - Provides a copy of a function to calculate a synchrony metric, but with all parameters fixed except the input data. For use with apply_windowed when functions have multiple parameters. 
+ * apply_windowed - A function used to apply other functions in a windowed fashion. 
+ * shuffle_recordings - Creates surrogate_data by shuffling variables between time series in a sample of multivariate time series. 
+ * shuffle_time_windows - Creates surrogate_data by shuffling time windows, separately for each variable of a multivariate time series. 
+&#34;&#34;&#34;
+
+import numpy as np
+import scipy.spatial
+import scipy.signal
+import scipy.stats
+import copy
+
+
+def recurrence_matrix(data, radius, normalise=True, embedding_dimension=None, embedding_delay=None):
+    &#34;&#34;&#34;Creates a recurrence matrix from a multivariate time series. The Euclidean distance, combined with the radius parameter, is used to determine which points are close enough to count as &#39;recurrent&#39;. 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the multivariate time series with shape (number_signals, duration).
+    radius: float
+        The Euclidean distance below which two points will count as recurrent.
+    normalise: bool
+        Whether to apply normalisation. Normalisation is applied on each variable separately, transforming the data to have mean 0 and variance 1, which is intended to help balance the relative importance of each variable when calculating Euclidean distances.
+    embedding_dimension: int
+        The number of copies of the multivariate time series to use. If provided, embedding_delay must also be used. 
+    embedding_delay: int
+        If using embedding_dimension, this is the delay in number of time steps that is applied to each new copy of the multivariate time series. 
+    
+    Returns
+    -------
+    recurrence_matrix: ndarray
+        A square matrix with shape (duration, duration). Cells have value True when two time points are recurrent, and False otherwise. 
+    &#34;&#34;&#34;
+    
+    if normalise:
+        
+        data = (data - data.mean(axis=1).reshape(-1,1)) / data.std(axis=1).reshape(-1,1)
+    
+    if embedding_dimension and embedding_delay:
+        
+        copies = []
+        
+        copy_length = data.shape[1] - (embedding_delay * (embedding_dimension-1))
+        
+        for i in range(embedding_dimension):
+            
+            copies.append(data[:, i*embedding_delay:copy_length+i*embedding_delay])
+    
+        data = np.concatenate(copies)
+    
+    distance_matrix = scipy.spatial.distance_matrix(data.T, data.T)
+    
+    return distance_matrix &lt; radius
+
+
+def get_diagonal_lengths(recurrence_matrix):
+    &#34;&#34;&#34;Returns the lengths of sequences where the successive cells have a value of 1, and how many times sequences of each length were observed, looking along the diagonals of a recurrence matrix. Considers only the upper triangle of the recurrence matrix, not including the line of identity. 
+    
+    Parameters
+    ----------
+    recurrence_matrix: ndarray
+        Matrix indicating which time points are recurrent with other time points. Truthy values are used to indicate a recurrence.
+    
+    Returns
+    -------
+    full_diagonal_length_counts: dict
+        A dict where the keys are the length of a sequence and the values are the number of times a sequence of that length was observed. 
+    &#34;&#34;&#34;
+    
+    full_diagonal_length_counts = {}
+    
+    def get_lengths(x):
+        
+        diagonal_length_counts = {}
+        current_length = 0
+        
+        for cell in x:
+            
+            if cell:
+                
+                current_length += 1 
+                
+            else:
+                
+                if current_length &gt; 0:
+                    
+                    diagonal_length_counts[current_length] = diagonal_length_counts.get(current_length, 0) + 1
+                
+                current_length = 0
+                
+        if current_length &gt; 0:
+                    
+            diagonal_length_counts[current_length] = diagonal_length_counts.get(current_length, 0) + 1
+                
+        return diagonal_length_counts
+    
+    for diagonal in range(1,recurrence_matrix.shape[0]):
+        
+        temp_length_counts = get_lengths(np.diag(recurrence_matrix, diagonal))
+        
+        for length, count in temp_length_counts.items():
+            
+            full_diagonal_length_counts[length] = full_diagonal_length_counts.get(length,0) + count
+            
+    return full_diagonal_length_counts
+
+
+def rqa_metrics(recurrence_matrix, min_length=2):
+    &#34;&#34;&#34;Returns the proportion of recurrence, proportion of determinism, mean diagonal length, and max diagonal length, for the input recurrence matrix. 
+    
+    Parameters
+    ----------
+    recurrence_matrix: ndarray
+        Matrix indicating which time points are recurrent with other time points. Truthy values are used to indicate a recurrence.
+    
+    Returns
+    -------
+    rec: float
+        A value between 0 and 1 representing the proportion of recurrence observed in the recurrence matrix. Multiply by 100 to get the %REC. 
+    det: float
+        A value between 0 and 1 representing the proportion of determinism observed in the recurrence matrix. Multiply by 100 to get the %det. 
+    mean_length: float
+        The mean length of diagonal sequences in the recurrence matrix. 
+    max_length: int
+        The maximum length of diagonal sequences in the recurrence matrix. 
+    &#34;&#34;&#34;
+    
+    diagonal_length_counts = get_diagonal_lengths(recurrence_matrix)
+    
+    rec = 0
+    det = 0
+    mean_length = 0
+    max_length = 0
+    
+    if diagonal_length_counts.keys():
+    
+        for length, count in diagonal_length_counts.items():
+
+            rec += length * count
+
+            if length &gt;= min_length:
+
+                det += length * count
+
+            mean_length = rec
+
+        rec = rec / (recurrence_matrix.shape[0]*(recurrence_matrix.shape[1]-1)/2) ##The number of off-diagonal cells in the upper triangle 
+        det = det / (recurrence_matrix.shape[0]*(recurrence_matrix.shape[1]-1)/2) ##The number of off-diagonal cells in the upper triangle
+        mean_length = mean_length / sum(diagonal_length_counts.values())
+        max_length = max(diagonal_length_counts.keys())
+    
+    return rec, det, mean_length, max_length
+
+
+def rho(phases):
+    &#34;&#34;&#34;Returns the quantity defined by Richardson et al. as &#39;rho&#39; in &#34;Measuring group synchrony: a cluster-phase method foranalyzing multivariate movement time-series:, doi: 10.3389/fphys.2012.00405. 
+    
+    Parameters
+    ----------
+    phases: ndarray
+        The phase time series (in radians) of the signals with the shape (number_signals, duration).
+    
+    Returns
+    -------
+    rho_group_i: ndarray
+        The quantity rho, computed for each signal at each time step.
+    rho_group: ndarray
+        The quantity rho averaged over time.
+    &#34;&#34;&#34;
+
+    # Group level
+    q_dash = np.exp(phases * 1j).mean(axis=0)
+    q = np.arctan2(q_dash.imag, q_dash.real)
+    # Individual level
+    phi = phases - q
+    phi_bar_dash = np.exp(phi * 1j).mean(axis=1)
+    phi_bar = np.arctan2(phi_bar_dash.imag, phi_bar_dash.real)
+    rho = np.abs(phi_bar_dash)
+    # Group level
+    rho_group_i = np.abs(np.exp((phi - phi_bar[:,None]) * 1j).mean(axis=0))
+    rho_group = rho_group_i.mean()
+    
+    return rho_group_i, rho_group
+
+
+def coherence_team(data, nperseg=None):
+    &#34;&#34;&#34;Returns the quantity defined by Reinero, Dikker, and Bavel as &#39;coherence&#39; in &#34;Inter-brain synchrony in teams predicts collective performance&#34;, doi: 10.1093/scan/nsaa135, with the quantity being averaged across the team.
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the time series of measurements with shape (number_signals, duration).
+    nperseg: int
+        The number of time steps used to form a &#39;sample&#39; of the signal when computing coherence, see scipy.signal.coherence documentation for more details. Optional, and will default to the lesser of (data duration / 4) and 256. 
+    
+    Returns
+    -------
+    coherence: float
+        The quantity coherence. 
+    &#34;&#34;&#34;
+    
+    ## Set nperseg to a reasonable default value for shorter input lengths
+    if nperseg is None:
+        if (data.shape[1] // 256) &lt; 4:  ## Default value is 256 
+            nperseg = data.shape[1] // 4
+    
+    coherence_scores = []
+    
+    for i, x in enumerate(data):
+        
+        for j, y in enumerate(data):
+            
+            if i &lt; j:
+                
+                coherence_scores.append(scipy.signal.coherence(x, y, nperseg=nperseg)[1].mean()) ## Actually we should just use the scipy coherence function
+                
+    return np.mean(coherence_scores)
+
+
+def convert_to_terciles(data):
+    &#34;&#34;&#34;Maps the input time series to numbers representing &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; values. The thresholds for deciding &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; are terciles. 
+    
+    Parameters
+    ----------
+    data: array
+        An array containing the time series of measurements for a single signal. 
+    
+    Returns
+    -------
+    data_terciles: array
+        An array where 0 represents a &#39;low&#39; value, 1 represents a &#39;medium&#39; value and 2 represents a &#39;high&#39; value
+    &#34;&#34;&#34;
+    
+    terciles = np.quantile(data.reshape(-1),[1/3,2/3])
+    
+    data_terciles = data.copy()
+    data_terciles[:] = 2
+    data_terciles[data&lt;terciles[1]] = 1
+    data_terciles[data&lt;terciles[0]] = 0
+    
+    return data_terciles
+
+
+def symbolic_entropy(data):
+    &#34;&#34;&#34;Computes entropy after mapping the signals to numbers representing &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; values, and then concatenating these numbers (across the signals) to create a &#39;pattern&#39; at each time step. The thresholds for deciding &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; are terciles. 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the time series of measurements, with the shape (number_signals, duration). 
+    
+    Returns
+    -------
+    pattern_entropy: float
+        The Shannon entropy of symbols found by mapping the input signals to &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; and concatenating across signals. 
+    &#34;&#34;&#34;
+    
+    data_terciles = np.apply_along_axis(convert_to_terciles, 1, data)
+    data_patterns = np.apply_along_axis(lambda x: &#34;&#34;.join([str(int(y)) for y in x]), 0, data_terciles)
+    
+    pattern_probabilities = np.unique(data_patterns, return_counts=True)[1]/data_patterns.shape[0]
+    
+    return -np.sum(pattern_probabilities * np.log(pattern_probabilities))
+
+
+def kuramoto_weak_null(phases):
+    &#34;&#34;&#34;Estimates the significance of the Kuramoto order parameter for a sample of multi-signal recordings, according to the &#39;weak null&#39; test described by Frank and Richardson in &#34;On a test statistic for the Kuramoto order parameter of synchronization: An illustration for group synchronization during rocking chairs&#34;, doi: 10.1016/j.physd.2010.07.015. 
+    
+    Parameters
+    ----------
+    phases: list
+        A list containing the phase time series (in radians) for each member of the sample, with each phase time series being an array with the shape (number_signals, duration). Each multivariate time series in the sample can be a different duration, although different numbers of signals are not permissible. 
+    
+    Returns
+    -------
+    p-value: float
+        The p-value of the observed Kuramoto order parameter.
+    t-statistic: float
+        The t-statistic.
+    df: float
+        The degrees of freedom.
+    &#34;&#34;&#34;
+    
+    ## Check that the number of signals is the same in each time series 
+    assert len(np.unique(list(map(lambda x: x.shape[0], phases)))) == 1, &#34;The number of signals in each time series must be consistent across the whole sample.&#34;
+    
+    def y_bar(phases):
+    
+        kuramoto_r = np.abs(np.exp(phases * 1j).mean(axis=0))
+        
+        y = kuramoto_r**2
+        
+        return y.mean(axis=-1)
+    
+    y_bars = np.fromiter(map(y_bar, phases), dtype=np.float)
+    
+    M = y_bars.mean() 
+    
+    mu = 1/phases[0].shape[0]
+    
+    s = y_bars.std()
+    
+    R_root = len(phases)**0.5
+    
+    t_statistic = (M - mu) / (s / R_root)
+    
+    df = len(phases) - 1
+    
+    return scipy.stats.t.sf(t_statistic, df=df), t_statistic, df ## This is a one-sided t-test
+
+
+def metric_fixed_parameters(function, parameters):
+    &#34;&#34;&#34;Returns a copy of a function to compute a metric, but with all parameters fixed except the data input. For use with apply_windowed. 
+    
+    Parameters
+    ----------
+    function: function
+        A function to compute a synchrony metric.
+    parameters: dict
+        A dictionary containing the parameters and their values for the function, except the main data input parameter.
+    
+    Returns
+    -------
+    new_function: function
+        A copy of the function to compute a synchrony metric, with all parameters fixed except the data input.
+    &#34;&#34;&#34;
+    
+    parameters = copy.deepcopy(parameters)
+    
+    def new_function(data):
+        
+        return function(data, **parameters)
+    
+    return new_function
+
+
+def apply_windowed(data, function, window_length, step=None):
+    &#34;&#34;&#34;Applies a function in a windowed fashion to a time series with shape (number_signals, duration). 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the time series of measurements, with the shape (number_signals, duration).
+    function: function
+        The function to apply within each window. 
+    window_length: int
+        The number of time steps to be included in a window.
+    step: int
+        The number of time steps by which to move forward in order to obtain the next window. 
+    
+    Returns
+    -------
+    windowed_results: ndarray
+        A numpy array containing the results of the function when it is applied to each window. 
+    &#34;&#34;&#34;
+    
+    if step is None:
+    
+        step = window_length
+    
+    def windowed_view(data, window_length, step):
+    
+        dim_0 = 1 + (data.shape[1] - window_length) // step
+        dim_1 = data.shape[0]
+        dim_2 = window_length
+        
+        if step is None:
+            step = dim_2
+        
+        stride_0, stride_1 = data.strides
+        
+        return np.lib.stride_tricks.as_strided(data, shape=(dim_0,dim_1,dim_2), strides=(stride_1 * step, stride_0, stride_1))
+    
+    return np.array(list(map(function, windowed_view(data, window_length, step))))
+
+
+def shuffle_recordings(data):
+    &#34;&#34;&#34;Creates surrogate data by shuffling variables between time series in a sample of multivariate recordings. This assumes that all recordings in the sample are the same length. 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing a sample of recordings with shape (number_recordings, number_signals, duration). 
+    
+    Returns
+    -------
+    surrogate_data: ndarray
+        An array containing a sample of recordings where the variables have been shuffled between recordings, with shape (number_recordings, number_signals, duration).
+    &#34;&#34;&#34;
+    
+    surrogate_shape = data.shape
+    
+    surrogate_data = data.copy()
+    
+    surrogate_data = surrogate_data.reshape(surrogate_shape[0] * surrogate_shape[1],-1)
+    
+    np.random.shuffle(surrogate_data)
+    
+    return surrogate_data.reshape(surrogate_shape[0],surrogate_shape[1],-1)
+
+
+def shuffle_time_windows(data, window_length):
+    &#34;&#34;&#34;Creates surrogate data by shuffling windows of data within each variable in a multivariate time series. 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing a multivariate recording with shape (number_signals, duration).
+    window_length: int
+        The number of time steps to use as the window length. 
+    
+    Returns
+    -------
+    surrogate_data: ndarray
+        An array containing a multivariate recording where windows of time have been shuffled independently for each variable, with shape (number_signals, duration).
+    &#34;&#34;&#34;
+    
+    def shuffle_individual(data):
+    
+        surrogate_shape = data.shape
+
+        surrogate_data = data.copy()
+
+        surrogate_data = surrogate_data.reshape(-1, window_length)
+
+        np.random.shuffle(surrogate_data)
+
+        return surrogate_data.reshape(surrogate_shape[0])
+    
+    return np.apply_along_axis(shuffle_individual, -1, data)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="multiSyncPy.synchrony_metrics.apply_windowed"><code class="name flex">
+<span>def <span class="ident">apply_windowed</span></span>(<span>data, function, window_length, step=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applies a function in a windowed fashion to a time series with shape (number_signals, duration). </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>An array containing the time series of measurements, with the shape (number_signals, duration).</dd>
+<dt><strong><code>function</code></strong> :&ensp;<code>function</code></dt>
+<dd>The function to apply within each window.</dd>
+<dt><strong><code>window_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of time steps to be included in a window.</dd>
+<dt><strong><code>step</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of time steps by which to move forward in order to obtain the next window.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>windowed_results</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>A numpy array containing the results of the function when it is applied to each window.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply_windowed(data, function, window_length, step=None):
+    &#34;&#34;&#34;Applies a function in a windowed fashion to a time series with shape (number_signals, duration). 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the time series of measurements, with the shape (number_signals, duration).
+    function: function
+        The function to apply within each window. 
+    window_length: int
+        The number of time steps to be included in a window.
+    step: int
+        The number of time steps by which to move forward in order to obtain the next window. 
+    
+    Returns
+    -------
+    windowed_results: ndarray
+        A numpy array containing the results of the function when it is applied to each window. 
+    &#34;&#34;&#34;
+    
+    if step is None:
+    
+        step = window_length
+    
+    def windowed_view(data, window_length, step):
+    
+        dim_0 = 1 + (data.shape[1] - window_length) // step
+        dim_1 = data.shape[0]
+        dim_2 = window_length
+        
+        if step is None:
+            step = dim_2
+        
+        stride_0, stride_1 = data.strides
+        
+        return np.lib.stride_tricks.as_strided(data, shape=(dim_0,dim_1,dim_2), strides=(stride_1 * step, stride_0, stride_1))
+    
+    return np.array(list(map(function, windowed_view(data, window_length, step))))</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.coherence_team"><code class="name flex">
+<span>def <span class="ident">coherence_team</span></span>(<span>data, nperseg=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the quantity defined by Reinero, Dikker, and Bavel as 'coherence' in "Inter-brain synchrony in teams predicts collective performance", doi: 10.1093/scan/nsaa135, with the quantity being averaged across the team.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>An array containing the time series of measurements with shape (number_signals, duration).</dd>
+<dt><strong><code>nperseg</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of time steps used to form a 'sample' of the signal when computing coherence, see scipy.signal.coherence documentation for more details. Optional, and will default to the lesser of (data duration / 4) and 256.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>coherence</code></strong> :&ensp;<code>float</code></dt>
+<dd>The quantity coherence.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def coherence_team(data, nperseg=None):
+    &#34;&#34;&#34;Returns the quantity defined by Reinero, Dikker, and Bavel as &#39;coherence&#39; in &#34;Inter-brain synchrony in teams predicts collective performance&#34;, doi: 10.1093/scan/nsaa135, with the quantity being averaged across the team.
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the time series of measurements with shape (number_signals, duration).
+    nperseg: int
+        The number of time steps used to form a &#39;sample&#39; of the signal when computing coherence, see scipy.signal.coherence documentation for more details. Optional, and will default to the lesser of (data duration / 4) and 256. 
+    
+    Returns
+    -------
+    coherence: float
+        The quantity coherence. 
+    &#34;&#34;&#34;
+    
+    ## Set nperseg to a reasonable default value for shorter input lengths
+    if nperseg is None:
+        if (data.shape[1] // 256) &lt; 4:  ## Default value is 256 
+            nperseg = data.shape[1] // 4
+    
+    coherence_scores = []
+    
+    for i, x in enumerate(data):
+        
+        for j, y in enumerate(data):
+            
+            if i &lt; j:
+                
+                coherence_scores.append(scipy.signal.coherence(x, y, nperseg=nperseg)[1].mean()) ## Actually we should just use the scipy coherence function
+                
+    return np.mean(coherence_scores)</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.convert_to_terciles"><code class="name flex">
+<span>def <span class="ident">convert_to_terciles</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Maps the input time series to numbers representing 'low', 'medium' and 'high' values. The thresholds for deciding 'low', 'medium' and 'high' are terciles. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>array</code></dt>
+<dd>An array containing the time series of measurements for a single signal.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>data_terciles</code></strong> :&ensp;<code>array</code></dt>
+<dd>An array where 0 represents a 'low' value, 1 represents a 'medium' value and 2 represents a 'high' value</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convert_to_terciles(data):
+    &#34;&#34;&#34;Maps the input time series to numbers representing &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; values. The thresholds for deciding &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; are terciles. 
+    
+    Parameters
+    ----------
+    data: array
+        An array containing the time series of measurements for a single signal. 
+    
+    Returns
+    -------
+    data_terciles: array
+        An array where 0 represents a &#39;low&#39; value, 1 represents a &#39;medium&#39; value and 2 represents a &#39;high&#39; value
+    &#34;&#34;&#34;
+    
+    terciles = np.quantile(data.reshape(-1),[1/3,2/3])
+    
+    data_terciles = data.copy()
+    data_terciles[:] = 2
+    data_terciles[data&lt;terciles[1]] = 1
+    data_terciles[data&lt;terciles[0]] = 0
+    
+    return data_terciles</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.get_diagonal_lengths"><code class="name flex">
+<span>def <span class="ident">get_diagonal_lengths</span></span>(<span>recurrence_matrix)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the lengths of sequences where the successive cells have a value of 1, and how many times sequences of each length were observed, looking along the diagonals of a recurrence matrix. Considers only the upper triangle of the recurrence matrix, not including the line of identity. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>recurrence_matrix</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>Matrix indicating which time points are recurrent with other time points. Truthy values are used to indicate a recurrence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>full_diagonal_length_counts</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dict where the keys are the length of a sequence and the values are the number of times a sequence of that length was observed.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_diagonal_lengths(recurrence_matrix):
+    &#34;&#34;&#34;Returns the lengths of sequences where the successive cells have a value of 1, and how many times sequences of each length were observed, looking along the diagonals of a recurrence matrix. Considers only the upper triangle of the recurrence matrix, not including the line of identity. 
+    
+    Parameters
+    ----------
+    recurrence_matrix: ndarray
+        Matrix indicating which time points are recurrent with other time points. Truthy values are used to indicate a recurrence.
+    
+    Returns
+    -------
+    full_diagonal_length_counts: dict
+        A dict where the keys are the length of a sequence and the values are the number of times a sequence of that length was observed. 
+    &#34;&#34;&#34;
+    
+    full_diagonal_length_counts = {}
+    
+    def get_lengths(x):
+        
+        diagonal_length_counts = {}
+        current_length = 0
+        
+        for cell in x:
+            
+            if cell:
+                
+                current_length += 1 
+                
+            else:
+                
+                if current_length &gt; 0:
+                    
+                    diagonal_length_counts[current_length] = diagonal_length_counts.get(current_length, 0) + 1
+                
+                current_length = 0
+                
+        if current_length &gt; 0:
+                    
+            diagonal_length_counts[current_length] = diagonal_length_counts.get(current_length, 0) + 1
+                
+        return diagonal_length_counts
+    
+    for diagonal in range(1,recurrence_matrix.shape[0]):
+        
+        temp_length_counts = get_lengths(np.diag(recurrence_matrix, diagonal))
+        
+        for length, count in temp_length_counts.items():
+            
+            full_diagonal_length_counts[length] = full_diagonal_length_counts.get(length,0) + count
+            
+    return full_diagonal_length_counts</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.kuramoto_weak_null"><code class="name flex">
+<span>def <span class="ident">kuramoto_weak_null</span></span>(<span>phases)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Estimates the significance of the Kuramoto order parameter for a sample of multi-signal recordings, according to the 'weak null' test described by Frank and Richardson in "On a test statistic for the Kuramoto order parameter of synchronization: An illustration for group synchronization during rocking chairs", doi: 10.1016/j.physd.2010.07.015. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>phases</code></strong> :&ensp;<code>list</code></dt>
+<dd>A list containing the phase time series (in radians) for each member of the sample, with each phase time series being an array with the shape (number_signals, duration). Each multivariate time series in the sample can be a different duration, although different numbers of signals are not permissible.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>p-value: float</code></dt>
+<dd>The p-value of the observed Kuramoto order parameter.</dd>
+<dt><code>t-statistic: float</code></dt>
+<dd>The t-statistic.</dd>
+<dt><strong><code>df</code></strong> :&ensp;<code>float</code></dt>
+<dd>The degrees of freedom.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kuramoto_weak_null(phases):
+    &#34;&#34;&#34;Estimates the significance of the Kuramoto order parameter for a sample of multi-signal recordings, according to the &#39;weak null&#39; test described by Frank and Richardson in &#34;On a test statistic for the Kuramoto order parameter of synchronization: An illustration for group synchronization during rocking chairs&#34;, doi: 10.1016/j.physd.2010.07.015. 
+    
+    Parameters
+    ----------
+    phases: list
+        A list containing the phase time series (in radians) for each member of the sample, with each phase time series being an array with the shape (number_signals, duration). Each multivariate time series in the sample can be a different duration, although different numbers of signals are not permissible. 
+    
+    Returns
+    -------
+    p-value: float
+        The p-value of the observed Kuramoto order parameter.
+    t-statistic: float
+        The t-statistic.
+    df: float
+        The degrees of freedom.
+    &#34;&#34;&#34;
+    
+    ## Check that the number of signals is the same in each time series 
+    assert len(np.unique(list(map(lambda x: x.shape[0], phases)))) == 1, &#34;The number of signals in each time series must be consistent across the whole sample.&#34;
+    
+    def y_bar(phases):
+    
+        kuramoto_r = np.abs(np.exp(phases * 1j).mean(axis=0))
+        
+        y = kuramoto_r**2
+        
+        return y.mean(axis=-1)
+    
+    y_bars = np.fromiter(map(y_bar, phases), dtype=np.float)
+    
+    M = y_bars.mean() 
+    
+    mu = 1/phases[0].shape[0]
+    
+    s = y_bars.std()
+    
+    R_root = len(phases)**0.5
+    
+    t_statistic = (M - mu) / (s / R_root)
+    
+    df = len(phases) - 1
+    
+    return scipy.stats.t.sf(t_statistic, df=df), t_statistic, df ## This is a one-sided t-test</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.metric_fixed_parameters"><code class="name flex">
+<span>def <span class="ident">metric_fixed_parameters</span></span>(<span>function, parameters)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a copy of a function to compute a metric, but with all parameters fixed except the data input. For use with apply_windowed. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>function</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function to compute a synchrony metric.</dd>
+<dt><strong><code>parameters</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary containing the parameters and their values for the function, except the main data input parameter.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>new_function</code></strong> :&ensp;<code>function</code></dt>
+<dd>A copy of the function to compute a synchrony metric, with all parameters fixed except the data input.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def metric_fixed_parameters(function, parameters):
+    &#34;&#34;&#34;Returns a copy of a function to compute a metric, but with all parameters fixed except the data input. For use with apply_windowed. 
+    
+    Parameters
+    ----------
+    function: function
+        A function to compute a synchrony metric.
+    parameters: dict
+        A dictionary containing the parameters and their values for the function, except the main data input parameter.
+    
+    Returns
+    -------
+    new_function: function
+        A copy of the function to compute a synchrony metric, with all parameters fixed except the data input.
+    &#34;&#34;&#34;
+    
+    parameters = copy.deepcopy(parameters)
+    
+    def new_function(data):
+        
+        return function(data, **parameters)
+    
+    return new_function</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.recurrence_matrix"><code class="name flex">
+<span>def <span class="ident">recurrence_matrix</span></span>(<span>data, radius, normalise=True, embedding_dimension=None, embedding_delay=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a recurrence matrix from a multivariate time series. The Euclidean distance, combined with the radius parameter, is used to determine which points are close enough to count as 'recurrent'. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>An array containing the multivariate time series with shape (number_signals, duration).</dd>
+<dt><strong><code>radius</code></strong> :&ensp;<code>float</code></dt>
+<dd>The Euclidean distance below which two points will count as recurrent.</dd>
+<dt><strong><code>normalise</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether to apply normalisation. Normalisation is applied on each variable separately, transforming the data to have mean 0 and variance 1, which is intended to help balance the relative importance of each variable when calculating Euclidean distances.</dd>
+<dt><strong><code>embedding_dimension</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of copies of the multivariate time series to use. If provided, embedding_delay must also be used.</dd>
+<dt><strong><code>embedding_delay</code></strong> :&ensp;<code>int</code></dt>
+<dd>If using embedding_dimension, this is the delay in number of time steps that is applied to each new copy of the multivariate time series.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>recurrence_matrix</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>A square matrix with shape (duration, duration). Cells have value True when two time points are recurrent, and False otherwise.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def recurrence_matrix(data, radius, normalise=True, embedding_dimension=None, embedding_delay=None):
+    &#34;&#34;&#34;Creates a recurrence matrix from a multivariate time series. The Euclidean distance, combined with the radius parameter, is used to determine which points are close enough to count as &#39;recurrent&#39;. 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the multivariate time series with shape (number_signals, duration).
+    radius: float
+        The Euclidean distance below which two points will count as recurrent.
+    normalise: bool
+        Whether to apply normalisation. Normalisation is applied on each variable separately, transforming the data to have mean 0 and variance 1, which is intended to help balance the relative importance of each variable when calculating Euclidean distances.
+    embedding_dimension: int
+        The number of copies of the multivariate time series to use. If provided, embedding_delay must also be used. 
+    embedding_delay: int
+        If using embedding_dimension, this is the delay in number of time steps that is applied to each new copy of the multivariate time series. 
+    
+    Returns
+    -------
+    recurrence_matrix: ndarray
+        A square matrix with shape (duration, duration). Cells have value True when two time points are recurrent, and False otherwise. 
+    &#34;&#34;&#34;
+    
+    if normalise:
+        
+        data = (data - data.mean(axis=1).reshape(-1,1)) / data.std(axis=1).reshape(-1,1)
+    
+    if embedding_dimension and embedding_delay:
+        
+        copies = []
+        
+        copy_length = data.shape[1] - (embedding_delay * (embedding_dimension-1))
+        
+        for i in range(embedding_dimension):
+            
+            copies.append(data[:, i*embedding_delay:copy_length+i*embedding_delay])
+    
+        data = np.concatenate(copies)
+    
+    distance_matrix = scipy.spatial.distance_matrix(data.T, data.T)
+    
+    return distance_matrix &lt; radius</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.rho"><code class="name flex">
+<span>def <span class="ident">rho</span></span>(<span>phases)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the quantity defined by Richardson et al. as 'rho' in "Measuring group synchrony: a cluster-phase method foranalyzing multivariate movement time-series:, doi: 10.3389/fphys.2012.00405. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>phases</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>The phase time series (in radians) of the signals with the shape (number_signals, duration).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>rho_group_i</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>The quantity rho, computed for each signal at each time step.</dd>
+<dt><strong><code>rho_group</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>The quantity rho averaged over time.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rho(phases):
+    &#34;&#34;&#34;Returns the quantity defined by Richardson et al. as &#39;rho&#39; in &#34;Measuring group synchrony: a cluster-phase method foranalyzing multivariate movement time-series:, doi: 10.3389/fphys.2012.00405. 
+    
+    Parameters
+    ----------
+    phases: ndarray
+        The phase time series (in radians) of the signals with the shape (number_signals, duration).
+    
+    Returns
+    -------
+    rho_group_i: ndarray
+        The quantity rho, computed for each signal at each time step.
+    rho_group: ndarray
+        The quantity rho averaged over time.
+    &#34;&#34;&#34;
+
+    # Group level
+    q_dash = np.exp(phases * 1j).mean(axis=0)
+    q = np.arctan2(q_dash.imag, q_dash.real)
+    # Individual level
+    phi = phases - q
+    phi_bar_dash = np.exp(phi * 1j).mean(axis=1)
+    phi_bar = np.arctan2(phi_bar_dash.imag, phi_bar_dash.real)
+    rho = np.abs(phi_bar_dash)
+    # Group level
+    rho_group_i = np.abs(np.exp((phi - phi_bar[:,None]) * 1j).mean(axis=0))
+    rho_group = rho_group_i.mean()
+    
+    return rho_group_i, rho_group</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.rqa_metrics"><code class="name flex">
+<span>def <span class="ident">rqa_metrics</span></span>(<span>recurrence_matrix, min_length=2)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the proportion of recurrence, proportion of determinism, mean diagonal length, and max diagonal length, for the input recurrence matrix. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>recurrence_matrix</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>Matrix indicating which time points are recurrent with other time points. Truthy values are used to indicate a recurrence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>rec</code></strong> :&ensp;<code>float</code></dt>
+<dd>A value between 0 and 1 representing the proportion of recurrence observed in the recurrence matrix. Multiply by 100 to get the %REC.</dd>
+<dt><strong><code>det</code></strong> :&ensp;<code>float</code></dt>
+<dd>A value between 0 and 1 representing the proportion of determinism observed in the recurrence matrix. Multiply by 100 to get the %det.</dd>
+<dt><strong><code>mean_length</code></strong> :&ensp;<code>float</code></dt>
+<dd>The mean length of diagonal sequences in the recurrence matrix.</dd>
+<dt><strong><code>max_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>The maximum length of diagonal sequences in the recurrence matrix.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rqa_metrics(recurrence_matrix, min_length=2):
+    &#34;&#34;&#34;Returns the proportion of recurrence, proportion of determinism, mean diagonal length, and max diagonal length, for the input recurrence matrix. 
+    
+    Parameters
+    ----------
+    recurrence_matrix: ndarray
+        Matrix indicating which time points are recurrent with other time points. Truthy values are used to indicate a recurrence.
+    
+    Returns
+    -------
+    rec: float
+        A value between 0 and 1 representing the proportion of recurrence observed in the recurrence matrix. Multiply by 100 to get the %REC. 
+    det: float
+        A value between 0 and 1 representing the proportion of determinism observed in the recurrence matrix. Multiply by 100 to get the %det. 
+    mean_length: float
+        The mean length of diagonal sequences in the recurrence matrix. 
+    max_length: int
+        The maximum length of diagonal sequences in the recurrence matrix. 
+    &#34;&#34;&#34;
+    
+    diagonal_length_counts = get_diagonal_lengths(recurrence_matrix)
+    
+    rec = 0
+    det = 0
+    mean_length = 0
+    max_length = 0
+    
+    if diagonal_length_counts.keys():
+    
+        for length, count in diagonal_length_counts.items():
+
+            rec += length * count
+
+            if length &gt;= min_length:
+
+                det += length * count
+
+            mean_length = rec
+
+        rec = rec / (recurrence_matrix.shape[0]*(recurrence_matrix.shape[1]-1)/2) ##The number of off-diagonal cells in the upper triangle 
+        det = det / (recurrence_matrix.shape[0]*(recurrence_matrix.shape[1]-1)/2) ##The number of off-diagonal cells in the upper triangle
+        mean_length = mean_length / sum(diagonal_length_counts.values())
+        max_length = max(diagonal_length_counts.keys())
+    
+    return rec, det, mean_length, max_length</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.shuffle_recordings"><code class="name flex">
+<span>def <span class="ident">shuffle_recordings</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates surrogate data by shuffling variables between time series in a sample of multivariate recordings. This assumes that all recordings in the sample are the same length. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>An array containing a sample of recordings with shape (number_recordings, number_signals, duration).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>surrogate_data</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>An array containing a sample of recordings where the variables have been shuffled between recordings, with shape (number_recordings, number_signals, duration).</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def shuffle_recordings(data):
+    &#34;&#34;&#34;Creates surrogate data by shuffling variables between time series in a sample of multivariate recordings. This assumes that all recordings in the sample are the same length. 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing a sample of recordings with shape (number_recordings, number_signals, duration). 
+    
+    Returns
+    -------
+    surrogate_data: ndarray
+        An array containing a sample of recordings where the variables have been shuffled between recordings, with shape (number_recordings, number_signals, duration).
+    &#34;&#34;&#34;
+    
+    surrogate_shape = data.shape
+    
+    surrogate_data = data.copy()
+    
+    surrogate_data = surrogate_data.reshape(surrogate_shape[0] * surrogate_shape[1],-1)
+    
+    np.random.shuffle(surrogate_data)
+    
+    return surrogate_data.reshape(surrogate_shape[0],surrogate_shape[1],-1)</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.shuffle_time_windows"><code class="name flex">
+<span>def <span class="ident">shuffle_time_windows</span></span>(<span>data, window_length)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates surrogate data by shuffling windows of data within each variable in a multivariate time series. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>An array containing a multivariate recording with shape (number_signals, duration).</dd>
+<dt><strong><code>window_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of time steps to use as the window length.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>surrogate_data</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>An array containing a multivariate recording where windows of time have been shuffled independently for each variable, with shape (number_signals, duration).</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def shuffle_time_windows(data, window_length):
+    &#34;&#34;&#34;Creates surrogate data by shuffling windows of data within each variable in a multivariate time series. 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing a multivariate recording with shape (number_signals, duration).
+    window_length: int
+        The number of time steps to use as the window length. 
+    
+    Returns
+    -------
+    surrogate_data: ndarray
+        An array containing a multivariate recording where windows of time have been shuffled independently for each variable, with shape (number_signals, duration).
+    &#34;&#34;&#34;
+    
+    def shuffle_individual(data):
+    
+        surrogate_shape = data.shape
+
+        surrogate_data = data.copy()
+
+        surrogate_data = surrogate_data.reshape(-1, window_length)
+
+        np.random.shuffle(surrogate_data)
+
+        return surrogate_data.reshape(surrogate_shape[0])
+    
+    return np.apply_along_axis(shuffle_individual, -1, data)</code></pre>
+</details>
+</dd>
+<dt id="multiSyncPy.synchrony_metrics.symbolic_entropy"><code class="name flex">
+<span>def <span class="ident">symbolic_entropy</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes entropy after mapping the signals to numbers representing 'low', 'medium' and 'high' values, and then concatenating these numbers (across the signals) to create a 'pattern' at each time step. The thresholds for deciding 'low', 'medium' and 'high' are terciles. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>An array containing the time series of measurements, with the shape (number_signals, duration).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>pattern_entropy</code></strong> :&ensp;<code>float</code></dt>
+<dd>The Shannon entropy of symbols found by mapping the input signals to 'low', 'medium' and 'high' and concatenating across signals.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def symbolic_entropy(data):
+    &#34;&#34;&#34;Computes entropy after mapping the signals to numbers representing &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; values, and then concatenating these numbers (across the signals) to create a &#39;pattern&#39; at each time step. The thresholds for deciding &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; are terciles. 
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the time series of measurements, with the shape (number_signals, duration). 
+    
+    Returns
+    -------
+    pattern_entropy: float
+        The Shannon entropy of symbols found by mapping the input signals to &#39;low&#39;, &#39;medium&#39; and &#39;high&#39; and concatenating across signals. 
+    &#34;&#34;&#34;
+    
+    data_terciles = np.apply_along_axis(convert_to_terciles, 1, data)
+    data_patterns = np.apply_along_axis(lambda x: &#34;&#34;.join([str(int(y)) for y in x]), 0, data_terciles)
+    
+    pattern_probabilities = np.unique(data_patterns, return_counts=True)[1]/data_patterns.shape[0]
+    
+    return -np.sum(pattern_probabilities * np.log(pattern_probabilities))</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="multiSyncPy" href="index.html">multiSyncPy</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="multiSyncPy.synchrony_metrics.apply_windowed" href="#multiSyncPy.synchrony_metrics.apply_windowed">apply_windowed</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.coherence_team" href="#multiSyncPy.synchrony_metrics.coherence_team">coherence_team</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.convert_to_terciles" href="#multiSyncPy.synchrony_metrics.convert_to_terciles">convert_to_terciles</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.get_diagonal_lengths" href="#multiSyncPy.synchrony_metrics.get_diagonal_lengths">get_diagonal_lengths</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.kuramoto_weak_null" href="#multiSyncPy.synchrony_metrics.kuramoto_weak_null">kuramoto_weak_null</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.metric_fixed_parameters" href="#multiSyncPy.synchrony_metrics.metric_fixed_parameters">metric_fixed_parameters</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.recurrence_matrix" href="#multiSyncPy.synchrony_metrics.recurrence_matrix">recurrence_matrix</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.rho" href="#multiSyncPy.synchrony_metrics.rho">rho</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.rqa_metrics" href="#multiSyncPy.synchrony_metrics.rqa_metrics">rqa_metrics</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.shuffle_recordings" href="#multiSyncPy.synchrony_metrics.shuffle_recordings">shuffle_recordings</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.shuffle_time_windows" href="#multiSyncPy.synchrony_metrics.shuffle_time_windows">shuffle_time_windows</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.symbolic_entropy" href="#multiSyncPy.synchrony_metrics.symbolic_entropy">symbolic_entropy</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

@@ -2,8 +2,8 @@
 
 This module provides functions used to generate synthetic data for the purposes of testing and exploring multivariate synchrony metrics. It contains the following functions:
 
-    * autoregressive_data - Produces a time series using a stochastic autoregressive function of order two.
-    * kuramoto_data - Produces a time series using a Kuramoto model. 
+ * autoregressive_data - Produces a time series using a stochastic autoregressive function of order two.
+ * kuramoto_data - Produces a time series using a Kuramoto model. 
 """
 
 import numpy as np

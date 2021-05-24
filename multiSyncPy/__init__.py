@@ -2,8 +2,8 @@
 
 This module provides functions to compute multivariate synchrony metrics and to generate synthetic data. It contains the following subpackages:
 
-    * synchrony_metrics - Provides functions used to compute synchrony metrics on multivariate time series.
-    * data_generation - Provides functions used to generate synthetic data for the purposes of testing and exploring multivariate synchrony metrics. 
+ * synchrony_metrics - Provides functions used to compute synchrony metrics on multivariate time series.
+ * data_generation - Provides functions used to generate synthetic data for the purposes of testing and exploring multivariate synchrony metrics. 
 """
 
 __all__ = ["data_generation", "synchrony_metrics"]
