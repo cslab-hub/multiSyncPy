@@ -2,18 +2,18 @@
 
 This module provides functions used to compute synchrony metrics on multivariate time series. It contains the following functions:
 
-    * recurrence_matrix - Creates a recurrence matrix from a multivariate time series. 
-    * get_diagonal_lengths - Finds the lengths of diagonals in a recurrence matrix. Used by rqa_metrics. 
-    * rqa_metrics - Computes the proportion of recurrence, proportion of determinism, average diagonal length and longest diagonal length for an input recurrence matrix. 
-    * rho - A cluster-phase synchrony metric.
-    * coherence_team - A synchrony metric based on spectral density.
-    * convert_to_terciles - Takes a time series and returns a time series where each value is replaced by a number indicating which tercile it belongs in. Used by pattern_entropy. 
-    * symbolic_entropy - A metric based on the entropy of the combined 'state' across a multivariate time series. 
-    * kuramoto_weak_null - Tests the significance of the observed Kuramoto order parameter values in a sample of multivariate time series. 
-    * metric_fixed_parameters - Provides a copy of a function to calculate a synchrony metric, but with all parameters fixed except the input data. For use with apply_windowed when functions have multiple parameters. 
-    * apply_windowed - A function used to apply other functions in a windowed fashion. 
-    * shuffle_recordings - Creates surrogate_data by shuffling variables between time series in a sample of multivariate time series. 
-    * shuffle_time_windows - Creates surrogate_data by shuffling time windows, separately for each variable of a multivariate time series. 
+ * recurrence_matrix - Creates a recurrence matrix from a multivariate time series. 
+ * get_diagonal_lengths - Finds the lengths of diagonals in a recurrence matrix. Used by rqa_metrics. 
+ * rqa_metrics - Computes the proportion of recurrence, proportion of determinism, average diagonal length and longest diagonal length for an input recurrence matrix. 
+ * rho - A cluster-phase synchrony metric.
+ * coherence_team - A synchrony metric based on spectral density.
+ * convert_to_terciles - Takes a time series and returns a time series where each value is replaced by a number indicating which tercile it belongs in. Used by pattern_entropy. 
+ * symbolic_entropy - A metric based on the entropy of the combined 'state' across a multivariate time series. 
+ * kuramoto_weak_null - Tests the significance of the observed Kuramoto order parameter values in a sample of multivariate time series. 
+ * metric_fixed_parameters - Provides a copy of a function to calculate a synchrony metric, but with all parameters fixed except the input data. For use with apply_windowed when functions have multiple parameters. 
+ * apply_windowed - A function used to apply other functions in a windowed fashion. 
+ * shuffle_recordings - Creates surrogate_data by shuffling variables between time series in a sample of multivariate time series. 
+ * shuffle_time_windows - Creates surrogate_data by shuffling time windows, separately for each variable of a multivariate time series. 
 """
 
 import numpy as np
