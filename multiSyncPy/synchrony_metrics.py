@@ -7,6 +7,7 @@ This module provides functions used to compute synchrony metrics on multivariate
  * rqa_metrics - Computes the proportion of recurrence, proportion of determinism, average diagonal length and longest diagonal length for an input recurrence matrix. 
  * rho - A cluster-phase synchrony metric.
  * coherence_team - A synchrony metric based on spectral density.
+ * aggregated_CSD - A synchrony metric based on cross-spectral density, similar to coherence_team().
  * convert_to_terciles - Takes a time series and returns a time series where each value is replaced by a number indicating which tercile it belongs in. Used by pattern_entropy. 
  * symbolic_entropy - A metric based on the entropy of the combined 'state' across a multivariate time series. 
  * kuramoto_weak_null - Tests the significance of the observed Kuramoto order parameter values in a sample of multivariate time series. 
@@ -228,6 +229,44 @@ def coherence_team(data, nperseg=None):
                 coherence_scores.append(scipy.signal.coherence(x, y, nperseg=nperseg)[1].mean()) ## Actually we should just use the scipy coherence function
                 
     return np.mean(coherence_scores)
+
+
+def aggregated_CSD(data):
+    """Returns a quantity, based on the cross-spectral density (CSD), similar to that of coherence_team() but with potentially better performance in the presence of Gaussian noise.
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the time series of measurements with shape (number_signals, duration).
+    
+    Returns
+    -------
+    aggregated_csd: float
+        The aggregated CSD quantity.
+    """
+    
+    ## Set nperseg to a reasonable value for shorter input lengths
+    if data.shape[1] // 256 < 4: ## Default value is 256
+    
+        nperseg = data.shape[1] // 4
+    
+    else:
+    
+        nperseg = None ## Let scipy set it to default value
+    
+    csd_scores = []
+    
+    for i, x in enumerate(data):
+    
+        for j, y in enumerate(data):
+        
+            if i < j:
+            
+                csd_scores.append(
+                    (np.abs(scipy.signal.csd(x, y, nperseg=nperseg)[1]) ** 2).sum() / (scipy.signal.csd(x, x, nperseg=nperseg)[1] * scipy.signal.csd(y, y, nperseg=nperseg)[1]).sum()
+                )
+    
+    return np.mean(csd_scores)
 
 
 def convert_to_terciles(data):
