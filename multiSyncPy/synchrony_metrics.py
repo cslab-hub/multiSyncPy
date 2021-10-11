@@ -7,7 +7,7 @@ This module provides functions used to compute synchrony metrics on multivariate
  * rqa_metrics - Computes the proportion of recurrence, proportion of determinism, average diagonal length and longest diagonal length for an input recurrence matrix. 
  * rho - A cluster-phase synchrony metric.
  * coherence_team - A synchrony metric based on spectral density.
- * aggregated_CSD - A synchrony metric based on cross-spectral density, similar to coherence_team().
+ * sum_normalized_csd - A synchrony metric based on cross-spectral density, similar to coherence_team().
  * convert_to_terciles - Takes a time series and returns a time series where each value is replaced by a number indicating which tercile it belongs in. Used by pattern_entropy. 
  * symbolic_entropy - A metric based on the entropy of the combined 'state' across a multivariate time series. 
  * kuramoto_weak_null - Tests the significance of the observed Kuramoto order parameter values in a sample of multivariate time series. 
@@ -231,8 +231,8 @@ def coherence_team(data, nperseg=None):
     return np.mean(coherence_scores)
 
 
-def aggregated_CSD(data):
-    """Returns a quantity, based on the cross-spectral density (CSD), similar to that of coherence_team() but with potentially better performance in the presence of Gaussian noise.
+def sum_normalized_csd(data):
+    """Returns a quantity, based on the cross-spectral density (CSD), similar to that of coherence_team() but which is less impacted by Gaussian noise.
     
     Parameters
     ----------
@@ -242,7 +242,7 @@ def aggregated_CSD(data):
     Returns
     -------
     aggregated_csd: float
-        The aggregated CSD quantity.
+        The sum-normalized CSD quantity.
     """
     
     ## Set nperseg to a reasonable value for shorter input lengths
