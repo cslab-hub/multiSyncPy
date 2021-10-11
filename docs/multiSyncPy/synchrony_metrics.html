@@ -30,6 +30,7 @@
 <li>rqa_metrics - Computes the proportion of recurrence, proportion of determinism, average diagonal length and longest diagonal length for an input recurrence matrix. </li>
 <li>rho - A cluster-phase synchrony metric.</li>
 <li>coherence_team - A synchrony metric based on spectral density.</li>
+<li>sum_normalized_csd - A synchrony metric based on cross-spectral density, similar to coherence_team().</li>
 <li>convert_to_terciles - Takes a time series and returns a time series where each value is replaced by a number indicating which tercile it belongs in. Used by pattern_entropy. </li>
 <li>symbolic_entropy - A metric based on the entropy of the combined 'state' across a multivariate time series. </li>
 <li>kuramoto_weak_null - Tests the significance of the observed Kuramoto order parameter values in a sample of multivariate time series. </li>
@@ -51,6 +52,7 @@ This module provides functions used to compute synchrony metrics on multivariate
  * rqa_metrics - Computes the proportion of recurrence, proportion of determinism, average diagonal length and longest diagonal length for an input recurrence matrix. 
  * rho - A cluster-phase synchrony metric.
  * coherence_team - A synchrony metric based on spectral density.
+ * sum_normalized_csd - A synchrony metric based on cross-spectral density, similar to coherence_team().
  * convert_to_terciles - Takes a time series and returns a time series where each value is replaced by a number indicating which tercile it belongs in. Used by pattern_entropy. 
  * symbolic_entropy - A metric based on the entropy of the combined &#39;state&#39; across a multivariate time series. 
  * kuramoto_weak_null - Tests the significance of the observed Kuramoto order parameter values in a sample of multivariate time series. 
@@ -272,6 +274,44 @@ def coherence_team(data, nperseg=None):
                 coherence_scores.append(scipy.signal.coherence(x, y, nperseg=nperseg)[1].mean()) ## Actually we should just use the scipy coherence function
                 
     return np.mean(coherence_scores)
+
+
+def sum_normalized_csd(data):
+    &#34;&#34;&#34;Returns a quantity, based on the cross-spectral density (CSD), similar to that of coherence_team() but which is less impacted by Gaussian noise.
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the time series of measurements with shape (number_signals, duration).
+    
+    Returns
+    -------
+    aggregated_csd: float
+        The sum-normalized CSD quantity.
+    &#34;&#34;&#34;
+    
+    ## Set nperseg to a reasonable value for shorter input lengths
+    if data.shape[1] // 256 &lt; 4: ## Default value is 256
+    
+        nperseg = data.shape[1] // 4
+    
+    else:
+    
+        nperseg = None ## Let scipy set it to default value
+    
+    csd_scores = []
+    
+    for i, x in enumerate(data):
+    
+        for j, y in enumerate(data):
+        
+            if i &lt; j:
+            
+                csd_scores.append(
+                    (np.abs(scipy.signal.csd(x, y, nperseg=nperseg)[1]) ** 2).sum() / (scipy.signal.csd(x, x, nperseg=nperseg)[1] * scipy.signal.csd(y, y, nperseg=nperseg)[1]).sum()
+                )
+    
+    return np.mean(csd_scores)
 
 
 def convert_to_terciles(data):
@@ -1133,6 +1173,63 @@ def shuffle_time_windows(data, window_length):
     return np.apply_along_axis(shuffle_individual, -1, data)</code></pre>
 </details>
 </dd>
+<dt id="multiSyncPy.synchrony_metrics.sum_normalized_csd"><code class="name flex">
+<span>def <span class="ident">sum_normalized_csd</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a quantity, based on the cross-spectral density (CSD), similar to that of coherence_team() but which is less impacted by Gaussian noise.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>ndarray</code></dt>
+<dd>An array containing the time series of measurements with shape (number_signals, duration).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>aggregated_csd</code></strong> :&ensp;<code>float</code></dt>
+<dd>The sum-normalized CSD quantity.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sum_normalized_csd(data):
+    &#34;&#34;&#34;Returns a quantity, based on the cross-spectral density (CSD), similar to that of coherence_team() but which is less impacted by Gaussian noise.
+    
+    Parameters
+    ----------
+    data: ndarray
+        An array containing the time series of measurements with shape (number_signals, duration).
+    
+    Returns
+    -------
+    aggregated_csd: float
+        The sum-normalized CSD quantity.
+    &#34;&#34;&#34;
+    
+    ## Set nperseg to a reasonable value for shorter input lengths
+    if data.shape[1] // 256 &lt; 4: ## Default value is 256
+    
+        nperseg = data.shape[1] // 4
+    
+    else:
+    
+        nperseg = None ## Let scipy set it to default value
+    
+    csd_scores = []
+    
+    for i, x in enumerate(data):
+    
+        for j, y in enumerate(data):
+        
+            if i &lt; j:
+            
+                csd_scores.append(
+                    (np.abs(scipy.signal.csd(x, y, nperseg=nperseg)[1]) ** 2).sum() / (scipy.signal.csd(x, x, nperseg=nperseg)[1] * scipy.signal.csd(y, y, nperseg=nperseg)[1]).sum()
+                )
+    
+    return np.mean(csd_scores)</code></pre>
+</details>
+</dd>
 <dt id="multiSyncPy.synchrony_metrics.symbolic_entropy"><code class="name flex">
 <span>def <span class="ident">symbolic_entropy</span></span>(<span>data)</span>
 </code></dt>
@@ -1203,6 +1300,7 @@ def shuffle_time_windows(data, window_length):
 <li><code><a title="multiSyncPy.synchrony_metrics.rqa_metrics" href="#multiSyncPy.synchrony_metrics.rqa_metrics">rqa_metrics</a></code></li>
 <li><code><a title="multiSyncPy.synchrony_metrics.shuffle_recordings" href="#multiSyncPy.synchrony_metrics.shuffle_recordings">shuffle_recordings</a></code></li>
 <li><code><a title="multiSyncPy.synchrony_metrics.shuffle_time_windows" href="#multiSyncPy.synchrony_metrics.shuffle_time_windows">shuffle_time_windows</a></code></li>
+<li><code><a title="multiSyncPy.synchrony_metrics.sum_normalized_csd" href="#multiSyncPy.synchrony_metrics.sum_normalized_csd">sum_normalized_csd</a></code></li>
 <li><code><a title="multiSyncPy.synchrony_metrics.symbolic_entropy" href="#multiSyncPy.synchrony_metrics.symbolic_entropy">symbolic_entropy</a></code></li>
 </ul>
 </li>

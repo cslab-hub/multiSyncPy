@@ -5,7 +5,7 @@ The main methods of this package are functions to calculate:
 
  * symbolic entropy, 
  * multidimensional recurrence quantification, 
- * coherence, 
+ * coherence (and a related 'sum-normalized CSD' metric),
  * the cluster-phase 'Rho' metric, and 
  * a statistical test based on the Kuramoto order parameter
 
