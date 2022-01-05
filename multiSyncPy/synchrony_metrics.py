@@ -157,9 +157,9 @@ def rqa_metrics(recurrence_matrix, min_length=2):
                 det += length * count
 
             mean_length = rec
-
+            
+        det = det / rec ##Divide by the number of recurrent points (before rec becomes a fraction)
         rec = rec / (recurrence_matrix.shape[0]*(recurrence_matrix.shape[1]-1)/2) ##The number of off-diagonal cells in the upper triangle 
-        det = det / (recurrence_matrix.shape[0]*(recurrence_matrix.shape[1]-1)/2) ##The number of off-diagonal cells in the upper triangle
         mean_length = mean_length / sum(diagonal_length_counts.values())
         max_length = max(diagonal_length_counts.keys())
     
