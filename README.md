@@ -1,4 +1,4 @@
-**Important announcement** - *There is an issue with the calculation of determinism in version 0.0.3 and below; update to version 0.0.4 to receive the fix (pip install --upgrade multiSyncPy). Thanks to @mrrezaie for spotting the issue. Please inform anyone you know who might be using multiSyncPy.*
+**Important announcement** - *There is an issue with the calculation of determinism in version 0.0.3 and below; update to version 0.0.4 to receive the fix (pip install --upgrade multiSyncPy). Thanks to @mrrezaie for spotting the issue. Please inform anyone you know who might be using an old version of multiSyncPy.*
 
 # multiSyncPy
 
@@ -16,6 +16,8 @@ We also include functions for two surrogation techniques to compare the observed
 
 multiSyncPy is freely available under the LGPL license. The source code is maintained at <https://github.com/cslab-hub/multiSyncPy>, which also includes examples of usage of the package. Documentation can be accessed through `help()` or accessed at <https://cslab-hub.github.io/multiSyncPy/>. 
 
-Further details of the package and case studies of its use on real-world data are described in our paper *multiSyncPy: A Python Package for Assessing Multivariate Coordination Dynamics*, available as a pre-print here: <https://psyarxiv.com/abquk/>. Please cite this paper if you use multiSyncPy in your research. Example citation (APA style):
+Further details of the package and case studies of its use on real-world data are described in our paper 
 
-Hudson, D., Wiltshire, T. J., & Atzmueller, M. (2021, April 28). multiSyncPy: A Python Package for Assessing Multivariate Coordination Dynamics. https://doi.org/10.31234/osf.io/abquk
+Hudson, D., Wiltshire, T.J. & Atzmueller, M. multiSyncPy: A Python package for assessing multivariate coordination dynamics. *Behav Res* (2022). <https://doi.org/10.3758/s13428-022-01855-y>. 
+
+Please cite this paper if you use multiSyncPy in your research.
