@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="multiSyncPy",
-    version="0.0.5",
+    version="0.1.0",
     description="Functions to quantify multivariate synchrony",
     long_description=README,
     long_description_content_type="text/markdown",
