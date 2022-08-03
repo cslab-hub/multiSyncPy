@@ -1,3 +1,3 @@
-pdoc --html --force --output-dir docs multiSyncPy
+pdoc --output-directory docs --docformat numpy ./multiSyncPy
 
 pause

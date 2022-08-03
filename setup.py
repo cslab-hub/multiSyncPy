@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="multiSyncPy",
-    version="0.0.4",
+    version="0.1.0",
     description="Functions to quantify multivariate synchrony",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -25,5 +25,5 @@ setup(
     ],
     packages=["multiSyncPy"],
     ##include_package_data=True,
-    install_requires=["numpy", "scipy"]
+    install_requires=["numpy", "scipy", "sklearn", "seaborn", "matplotlib"]
 )
