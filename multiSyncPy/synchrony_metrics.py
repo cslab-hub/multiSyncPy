@@ -15,6 +15,9 @@ This module provides functions used to compute synchrony metrics on multivariate
  * apply_windowed - A function used to apply other functions in a windowed fashion. 
  * shuffle_recordings - Creates surrogate_data by shuffling variables between time series in a sample of multivariate time series. 
  * shuffle_time_windows - Creates surrogate_data by shuffling time windows, separately for each variable of a multivariate time series. 
+ * get_driver_scores - Gets 'driver' scores indicating which variables are influential in a multivariate time series. Used by get_sync_index()
+ * get_empath_scores - Gets 'empath' scores indicating which variables are most influenced in a multivariate time series. Used by get_sync_index()
+ * get_sync_index - A synchrony metric based on how much variables influence one another. 
 """
 
 import numpy as np
@@ -22,6 +25,7 @@ import scipy.spatial
 import scipy.signal
 import scipy.stats
 import copy
+from sklearn.linear_model import LinearRegression
 
 
 def recurrence_matrix(data, radius, normalise=True, embedding_dimension=None, embedding_delay=None):
@@ -480,3 +484,153 @@ def shuffle_time_windows(data, window_length):
         return surrogate_data.reshape(surrogate_shape[0])
     
     return np.apply_along_axis(shuffle_individual, -1, data)
+
+
+
+def get_sync_coef( series_1, series_2, lag_length = 10):
+    """
+    Finds the synchronisation coefficient for a pair of univariate time series. 
+
+    Parameters
+    -----------
+    series_1, series_2: ndarrays shape ( 1, duration )
+        The data to analyse. 
+    lag_length: int 
+        Default value is 10. See recommendations at page 23 ( for GSR use 1, 5, 6 or 20 ) of the paper "Development of a Synchronization Coefficient for Biosocial Interactions in Groups and Teams" by Stephen J. Guastello and Anthony F. Peressini. 
+
+    Returns
+    ---------
+    sync_coef: float
+        How much of series_1 is predicted by series_2 ( as described in "Development of a Synchronization Coefficient for Biosocial Interactions in Groups and Teams" )
+    """
+
+    # get Beta_2 from formula (6) 
+
+    X_s1_s2_merged = np.r_[ '1, 2, 0', series_1, series_2 ][ :len(series_1) - lag_length ]
+    y_s1_dependent = series_1[ lag_length: ]
+
+    lin_regr = LinearRegression()
+    lin_regr.fit(X_s1_s2_merged, y_s1_dependent)
+
+    Beta_2  = lin_regr.coef_[1]
+
+    return Beta_2
+
+
+def get_matrix_sync_coef( series, lag_length ):
+    """
+    Finds all pairwise synchronisation coefficients for a multivariate time series. 
+
+    Parameters
+    -----------
+    series: ndarray
+        A multivariate time series to analyse, with the shape (number_signals, duration).
+    lag_length: int
+        The lag length to use. For more details of this parameter, see the paper "Development of a Synchronization Coefficient for Biosocial Interactions in Groups and Teams" by Stephen J. Guastello and Anthony F. Peressini. 
+    
+    Returns
+    --------
+    m: ndarray
+        A matrix of synchrony coefficients with shape ( number variables in multivariate input, number variables in multivariate input )
+    """
+
+    m = []
+
+    for i in range( len(series)) :
+        row = []
+        for j in range(len(series)):
+            row.append(get_sync_coef(series[j], series[i], lag_length) ) 
+        m.append(row)
+    
+    return m
+
+
+def get_driver_scores( series, lag_length = 10 ):
+    """
+    Finds the 'driver' scores for all the variables in a multivariate time series. 
+
+    Parameters
+    -----------
+    series: ndarray
+        A multivariate time series to analyse, with the shape (number_signals, duration).
+    lag_length: int
+        The lag length to use. The default value is 10. For more details of this parameter, see the paper "Development of a Synchronization Coefficient for Biosocial Interactions in Groups and Teams" by Stephen J. Guastello and Anthony F. Peressini. 
+    
+    Returns
+    -------
+    driver_scores: list
+        A list containing the driver scores of participants. 
+    """
+
+    m = get_matrix_sync_coef( series, lag_length )
+
+    driver_scores = np.sum( np.square(m), 1)
+
+    return driver_scores
+
+
+def get_empath_scores( series, lag_length = 10 ):
+    """
+    Finds the 'empath' scores for all the variables in a multivariate time series. 
+
+    Parameters
+    -----------
+    series: ndarray
+        A multivariate time series to analyse, with the shape (number_signals, duration).
+    lag_length: int
+        The lag length to use. The default value is 10. For more details of this parameter, see the paper "Development of a Synchronization Coefficient for Biosocial Interactions in Groups and Teams" by Stephen J. Guastello and Anthony F. Peressini. 
+    
+    Returns
+    -------
+    empath_scores: list
+        A list containing the empath scores of participants. 
+    """
+
+    m = get_matrix_sync_coef( series, lag_length )
+
+    empath_scores = np.sum( np.square(m), 0)
+
+    return empath_scores
+
+
+def get_sync_index( series, lag_length = 10 ):
+    """
+    Finds the synchronisation index for a multivariate time series. 
+
+    Parameters
+    -----------
+    series: ndarray
+        A multivariate time series to analyse, with the shape (number_signals, duration).
+    lag_length: int
+        The lag length to use. The default value is 10. For more details of this parameter, see the paper "Development of a Synchronization Coefficient for Biosocial Interactions in Groups and Teams" by Stephen J. Guastello and Anthony F. Peressini. 
+    
+    Returns
+    --------
+    sync_index: float
+        The Synchrony Index computed using the driver and empath scores.
+    """
+
+    # calculate Synchrony Index
+
+    m = get_matrix_sync_coef(series, lag_length)
+    empath_scores = get_empath_scores(series, lag_length)
+
+    # identify the empath
+    empath_index = np.where( empath_scores == np.amax(empath_scores) )
+
+    # remove row of empath, create V, remove column of empath
+    M = np.array( m )
+
+    M = np.delete(M, empath_index, 0)  # delete row of empath
+    V = M[ :, empath_index]
+    V = np.squeeze(V)
+
+    M = np.delete(M, empath_index, 1)  # delete column of empath
+
+    # take inverse of M and calculate vector of weights = Q
+
+    M_inverse = np.linalg.inv(M)
+    Q = np.around( M_inverse.dot(V), 4 )
+    S = np.around(V.dot( Q ), 4 )
+    
+    return S

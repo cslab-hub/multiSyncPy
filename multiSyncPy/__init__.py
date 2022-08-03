@@ -6,7 +6,8 @@ This module provides functions to compute multivariate synchrony metrics and to 
  * data_generation - Provides functions used to generate synthetic data for the purposes of testing and exploring multivariate synchrony metrics. 
 """
 
-__all__ = ["data_generation", "synchrony_metrics"]
+__all__ = ["data_generation", "synchrony_metrics", "visualisations"]
 
 import multiSyncPy.data_generation
 import multiSyncPy.synchrony_metrics
+import multiSyncPy.visualisations
