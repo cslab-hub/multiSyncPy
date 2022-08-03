@@ -9,7 +9,8 @@ The main methods of this package are functions to calculate:
  * symbolic entropy, 
  * multidimensional recurrence quantification, 
  * coherence (and a related 'sum-normalized CSD' metric),
- * the cluster-phase 'Rho' metric, and 
+ * the cluster-phase 'Rho' metric
+ * the synchronization coefficient metric, and 
  * a statistical test based on the Kuramoto order parameter
 
 We also include functions for two surrogation techniques to compare the observed coordination dynamics with chance levels.
