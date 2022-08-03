@@ -1,4 +1,4 @@
-**Important announcement** - *There is an issue with the calculation of determinism in version 0.0.3 and below; update to version 0.0.4 to receive the fix (pip install --upgrade multiSyncPy). Thanks to @mrrezaie for spotting the issue. Please inform anyone you know who might be using multiSyncPy.*
+**Important announcement** - *There is an issue with the calculation of determinism in version 0.0.3 and below; update to version 0.0.4 or above to receive the fix (pip install --upgrade multiSyncPy). Thanks to @mrrezaie for spotting the issue. Please inform anyone you know who might be using multiSyncPy.*
 
 # multiSyncPy
 
