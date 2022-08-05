@@ -1,4 +1,4 @@
-**Important announcement** - *There is an issue with the calculation of determinism in version 0.0.3 and below; update to version 0.0.4 or above to receive the fix (pip install --upgrade multiSyncPy). Thanks to @mrrezaie for spotting the issue. Please inform anyone you know who might be using multiSyncPy.*
+**Important announcement** - *There is a new version of multiSyncPy (0.5.3) that includes a new multivariate synchronization measures as well as some visualiations functions.
 
 # multiSyncPy
 
@@ -10,10 +10,13 @@ The main methods of this package are functions to calculate:
  * multidimensional recurrence quantification, 
  * coherence (and a related 'sum-normalized CSD' metric),
  * the cluster-phase 'Rho' metric
- * the synchronization coefficient metric, and 
- * a statistical test based on the Kuramoto order parameter
+ * the synchronization coefficient metric,
+ * a statistical test based on the Kuramoto order parameter, and
+ * driver-empath model with synchrony index
 
 We also include functions for two surrogation techniques to compare the observed coordination dynamics with chance levels.
+
+Additionally, we include a set of functions to visualize the time-varying coordination metrics as well as the individual or pair-wise contributions to the multivariate measure (depending on the particular method).
 
 multiSyncPy is freely available under the LGPL license. The source code is maintained at <https://github.com/cslab-hub/multiSyncPy>, which also includes examples of usage of the package. Documentation can be accessed through `help()` or accessed at <https://cslab-hub.github.io/multiSyncPy/>. 
 
