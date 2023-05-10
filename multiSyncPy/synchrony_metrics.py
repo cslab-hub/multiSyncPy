@@ -231,7 +231,7 @@ def coherence_team(data, nperseg=None):
             if i < j:
                 coherence_scores.append(
                     scipy.signal.coherence(x, y, nperseg=nperseg)[1].mean()
-                )  ## Actually we should just use the scipy coherence function
+                )
 
     return np.mean(coherence_scores)
 
