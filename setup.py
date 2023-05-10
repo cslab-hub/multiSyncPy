@@ -25,5 +25,5 @@ setup(
     ],
     packages=["multiSyncPy"],
     ##include_package_data=True,
-    install_requires=["numpy", "scipy", "sklearn", "seaborn", "matplotlib"]
+    install_requires=["numpy", "scipy", "scikit-learn", "seaborn", "matplotlib"]
 )
