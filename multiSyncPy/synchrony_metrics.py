@@ -566,8 +566,8 @@ def get_driver_scores(series, lag_length=10):
 
     Returns
     -------
-    driver_scores: list
-        A list containing the driver scores of participants.
+    driver_scores: array
+        An array containing the driver scores of participants.
     """
 
     m = get_matrix_sync_coef(series, lag_length)
@@ -590,8 +590,8 @@ def get_empath_scores(series, lag_length=10):
 
     Returns
     -------
-    empath_scores: list
-        A list containing the empath scores of participants.
+    empath_scores: array
+        An array containing the empath scores of participants.
     """
 
     m = get_matrix_sync_coef(series, lag_length)
