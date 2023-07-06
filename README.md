@@ -1,4 +1,4 @@
-**Important announcement** - *There is a new version of multiSyncPy (0.5.3) that includes a new multivariate synchronization measures as well as some visualiation functions.
+**Important announcement** - *There is a new version of multiSyncPy (0.1.0) that includes a new multivariate synchronization measures as well as some visualiation functions.
 
 # multiSyncPy
 
