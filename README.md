@@ -22,6 +22,6 @@ multiSyncPy is freely available under the LGPL license. The source code is maint
 
 Further details of the package and case studies of its use on real-world data are described in our paper. 
 
-Hudson, D., Wiltshire, T.J. & Atzmueller, M. multiSyncPy: A Python package for assessing multivariate coordination dynamics. *Behav Res* (2022). <https://doi.org/10.3758/s13428-022-01855-y>. 
+Hudson, D., Wiltshire, T. J., & Atzmueller, M. (2023). multiSyncPy: A Python package for assessing multivariate coordination dynamics. Behavior Research Methods, 55(2), 932-962. <https://doi.org/10.3758/s13428-022-01855-y>. 
 
 Please cite this paper if you use multiSyncPy in your research.
