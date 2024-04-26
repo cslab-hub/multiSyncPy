@@ -353,7 +353,7 @@ def kuramoto_weak_null(phases):
 
         return y.mean(axis=-1)
 
-    y_bars = np.fromiter(map(y_bar, phases), dtype=np.float)
+    y_bars = np.fromiter(map(y_bar, phases), dtype=float)
 
     M = y_bars.mean()
 
