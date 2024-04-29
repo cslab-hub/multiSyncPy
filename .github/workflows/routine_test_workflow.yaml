@@ -34,9 +34,9 @@ jobs:
         pip install pytest pytest-cov
         pytest tests.py --doctest-modules --junitxml=junit/test-results-${{ matrix.os }}.xml
     - name: Upload pytest test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: pytest-results-${{ matrix.os }}
-          path: junit/test-results-${{ matrix.os }}.xml
-        # Use always() to always run this step to publish test results when there are test failures
-        if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-results-${{ matrix.os }}
+        path: junit/test-results-${{ matrix.os }}.xml
+      # Use always() to always run this step to publish test results when there are test failures
+      if: ${{ always() }}
